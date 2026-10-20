@@ -1,22 +1,5 @@
 # Intelligent Resource Allocation and Conflict Management System
 
-```{=html}
-<p align="center">
-```
-`<strong>`{=html}A DBMS-driven platform for intelligent resource
-allocation, booking management, and conflict
-prevention.`</strong>`{=html}
-```{=html}
-</p>
-```
-```{=html}
-<p align="center">
-```
-`<img src="frontend/images/ira-logo.png" alt="IRA Logo" width="420">`{=html}
-```{=html}
-</p>
-```
-
 ------------------------------------------------------------------------
 
 ## 📌 Overview
