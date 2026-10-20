@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Bookings - Intelligent Resource Allocation System</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         APPLICATION HEADER
+         ===================================================== -->
+
+    <header class="app-header">
+
+        <div class="brand-area">
+
+            <div class="brand-logo">
+                IRA
+            </div>
+
+            <div class="brand-text">
+
+                <h1>
+                    Intelligent Resource Allocation
+                </h1>
+
+                <span>
+                    Resource & Conflict Management
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                System Online
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN LAYOUT
+         ===================================================== -->
+
+    <div class="layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <aside class="sidebar">
+
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-logo">
+                    IRA
+                </div>
+
+                <div>
+
+                    <strong>
+                        IRA System
+                    </strong>
+
+                    <span>
+                        Management Portal
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-label">
+                    MAIN MENU
+                </span>
+
+
+                <a href="index.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a href="resources.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Resources
+                    </span>
+
+                </a>
+
+
+                <a href="bookings.html"
+                   class="nav-link active">
+
+                    <span class="nav-icon">
+                        ◫
+                    </span>
+
+                    <span>
+                        Bookings
+                    </span>
+
+                </a>
+
+
+                <a href="requests.html"
+                   id="requestsNav"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Booking Requests
+                    </span>
+
+                </a>
+
+
+                <a href="maintenance.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Maintenance
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-system">
+
+                    <span class="status-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            System Status
+                        </strong>
+
+                        <span>
+                            All services operational
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
+
+        <main class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="dashboard-header">
+
+                <div>
+
+                    <h1>
+                        Bookings
+                    </h1>
+
+                    <p class="dashboard-subtitle">
+                        Monitor confirmed resource reservations
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-user-bar">
+
+                    <div id="userInfo"
+                         class="user-info">
+
+                    </div>
+
+
+                    <button
+                        id="logoutButton"
+                        class="logout-button">
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BOOKING SUMMARY
+                 ================================================= -->
+
+            <div class="cards">
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ◫
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Total Bookings
+                        </h3>
+
+                        <p id="totalBookingsPage">
+                            --
+                        </p>
+
+                        <span>
+                            All reservations
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Confirmed
+                        </h3>
+
+                        <p id="confirmedBookings">
+                            --
+                        </p>
+
+                        <span>
+                            Active reservations
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ⚡
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Completed
+                        </h3>
+
+                        <p id="completedBookings">
+                            --
+                        </p>
+
+                        <span>
+                            Completed sessions
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ×
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Cancelled
+                        </h3>
+
+                        <p id="cancelledBookings">
+                            --
+                        </p>
+
+                        <span>
+                            Cancelled reservations
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SEARCH / FILTER
+                 ================================================= -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Booking Records
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Search and review resource reservations
+                        </p>
+
+                    </div>
+
+
+                    <input
+                        type="text"
+                        id="bookingSearch"
+                        placeholder="Search bookings..."
+                        style="width:220px;"
+                    >
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BOOKING TABLE
+                     ================================================= -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Booking ID
+                                </th>
+
+                                <th>
+                                    User
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Resource
+                                </th>
+
+                                <th>
+                                    Start Time
+                                </th>
+
+                                <th>
+                                    End Time
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="bookingsTableBody">
+
+                            <tr>
+
+                                <td colspan="7">
+                                    Loading bookings...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BOOKING MANAGEMENT INFORMATION
+                 ================================================= -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Booking Management
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Intelligent reservation and scheduling
+                            capabilities
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="features">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Confirmed Reservations
+                            </strong>
+
+                            <p>
+                                Approved booking requests are
+                                converted into confirmed
+                                reservations.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚡
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Conflict Detection
+                            </strong>
+
+                            <p>
+                                The database automatically
+                                prevents overlapping bookings
+                                for the same resource.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚙
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Maintenance Validation
+                            </strong>
+
+                            <p>
+                                Resources under scheduled or
+                                active maintenance cannot be
+                                booked during the affected period.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ▦
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Transaction Management
+                            </strong>
+
+                            <p>
+                                Booking approval uses database
+                                transactions to maintain
+                                consistency and reliability.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         EXISTING APPLICATION JAVASCRIPT
+         ===================================================== -->
+
+    <script src="js/app.js"></script>
+
+
+
+    <!-- =====================================================
+         BOOKING PAGE SCRIPT
+         ===================================================== -->
+
+    <script>
+
+        let allBookings = [];
+
+
+        async function loadBookingsPage() {
+
+            const tableBody =
+                document.getElementById(
+                    "bookingsTableBody"
+                );
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/bookings`
+                    );
+
+
+                const bookings =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7">
+                                Could not load bookings.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                allBookings = bookings;
+
+
+                updateBookingSummary(
+                    bookings
+                );
+
+
+                renderBookings(
+                    bookings
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Booking loading error:",
+                    error
+                );
+
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7">
+                            Could not connect to the server.
+                        </td>
+                    </tr>
+                `;
+
+            }
+
+        }
+
+
+
+        function updateBookingSummary(bookings) {
+
+            const total =
+                bookings.length;
+
+
+            const confirmed =
+                bookings.filter(
+                    booking =>
+                        booking.booking_status ===
+                        "CONFIRMED"
+                ).length;
+
+
+            const completed =
+                bookings.filter(
+                    booking =>
+                        booking.booking_status ===
+                        "COMPLETED"
+                ).length;
+
+
+            const cancelled =
+                bookings.filter(
+                    booking =>
+                        booking.booking_status ===
+                        "CANCELLED"
+                ).length;
+
+
+            document.getElementById(
+                "totalBookingsPage"
+            ).textContent = total;
+
+
+            document.getElementById(
+                "confirmedBookings"
+            ).textContent = confirmed;
+
+
+            document.getElementById(
+                "completedBookings"
+            ).textContent = completed;
+
+
+            document.getElementById(
+                "cancelledBookings"
+            ).textContent = cancelled;
+
+        }
+
+
+
+        function getBookingStatusClass(status) {
+
+            if (status === "CONFIRMED") {
+                return "status-confirmed";
+            }
+
+            if (status === "COMPLETED") {
+                return "status-completed";
+            }
+
+            if (status === "CANCELLED") {
+                return "status-cancelled";
+            }
+
+            return "";
+
+        }
+
+
+
+        function renderBookings(bookings) {
+
+            const tableBody =
+                document.getElementById(
+                    "bookingsTableBody"
+                );
+
+
+            if (bookings.length === 0) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7">
+                            No bookings found.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            tableBody.innerHTML =
+                bookings.map(
+                    booking => `
+
+                    <tr>
+
+                        <td>
+                            #${booking.booking_id}
+                        </td>
+
+                        <td>
+
+                            <strong>
+                                ${booking.user_name}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${booking.email}
+                            </small>
+
+                        </td>
+
+                        <td>
+                            ${booking.department_name}
+                        </td>
+
+                        <td>
+                            ${booking.resource_name}
+                        </td>
+
+                        <td>
+                            ${formatDateTime(
+                                booking.start_time
+                            )}
+                        </td>
+
+                        <td>
+                            ${formatDateTime(
+                                booking.end_time
+                            )}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="status-badge
+                                ${getBookingStatusClass(
+                                    booking.booking_status
+                                )}">
+
+                                ${booking.booking_status}
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                `
+                ).join("");
+
+        }
+
+
+
+        function formatDateTime(value) {
+
+            if (!value) {
+                return "—";
+            }
+
+
+            const date =
+                new Date(value);
+
+
+            if (isNaN(date.getTime())) {
+                return value;
+            }
+
+
+            return date.toLocaleString(
+                "en-IN",
+                {
+                    dateStyle: "medium",
+                    timeStyle: "short"
+                }
+            );
+
+        }
+
+
+
+        const bookingSearch =
+            document.getElementById(
+                "bookingSearch"
+            );
+
+
+        if (bookingSearch) {
+
+            bookingSearch.addEventListener(
+                "input",
+                function () {
+
+                    const search =
+                        this.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    const filtered =
+                        allBookings.filter(
+                            booking =>
+
+                                String(
+                                    booking.booking_id
+                                )
+                                .includes(search)
+
+                                ||
+
+                                booking.user_name
+                                    .toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                booking.department_name
+                                    .toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                booking.resource_name
+                                    .toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                booking.booking_status
+                                    .toLowerCase()
+                                    .includes(search)
+
+                        );
+
+
+                    renderBookings(
+                        filtered
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        loadBookingsPage();
+
+    </script>
+
+
+</body>
+
+</html>

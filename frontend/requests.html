@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Requests - Intelligent Resource Allocation System</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         APPLICATION HEADER
+         ===================================================== -->
+
+    <header class="app-header">
+
+        <div class="brand-area">
+
+            <div class="brand-logo">
+                IRA
+            </div>
+
+            <div class="brand-text">
+
+                <h1>
+                    Intelligent Resource Allocation
+                </h1>
+
+                <span>
+                    Resource & Conflict Management
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                System Online
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN LAYOUT
+         ===================================================== -->
+
+    <div class="layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <aside class="sidebar">
+
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-logo">
+                    IRA
+                </div>
+
+                <div>
+
+                    <strong>
+                        IRA System
+                    </strong>
+
+                    <span>
+                        Management Portal
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-label">
+                    MAIN MENU
+                </span>
+
+
+                <a href="index.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a href="resources.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Resources
+                    </span>
+
+                </a>
+
+
+                <a href="bookings.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ◫
+                    </span>
+
+                    <span>
+                        Bookings
+                    </span>
+
+                </a>
+
+
+                <a href="requests.html"
+                   id="requestsNav"
+                   class="nav-link active">
+
+                    <span class="nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Booking Requests
+                    </span>
+
+                </a>
+
+
+                <a href="maintenance.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Maintenance
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-system">
+
+                    <span class="status-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            System Status
+                        </strong>
+
+                        <span>
+                            All services operational
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
+
+        <main class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="dashboard-header">
+
+                <div>
+
+                    <h1>
+                        Booking Requests
+                    </h1>
+
+                    <p class="dashboard-subtitle">
+                        Review, approve and reject resource
+                        allocation requests
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-user-bar">
+
+                    <div id="userInfo"
+                         class="user-info">
+
+                    </div>
+
+
+                    <button
+                        id="logoutButton"
+                        class="logout-button">
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REQUEST SUMMARY
+                 ================================================= -->
+
+            <div class="cards">
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ◷
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Total Requests
+                        </h3>
+
+                        <p id="totalRequests">
+                            --
+                        </p>
+
+                        <span>
+                            All booking requests
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        !
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Pending
+                        </h3>
+
+                        <p id="pendingRequestsPage">
+                            --
+                        </p>
+
+                        <span>
+                            Awaiting review
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Approved
+                        </h3>
+
+                        <p id="approvedRequests">
+                            --
+                        </p>
+
+                        <span>
+                            Successfully allocated
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ×
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Rejected
+                        </h3>
+
+                        <p id="rejectedRequests">
+                            --
+                        </p>
+
+                        <span>
+                            Requests not approved
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ⚡
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Conflict Protected
+                        </h3>
+
+                        <p>
+                            ON
+                        </p>
+
+                        <span>
+                            Database validation active
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REQUEST FILTER
+                 ================================================= -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Request Management
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Review pending requests and monitor
+                            allocation decisions
+                        </p>
+
+                    </div>
+
+
+                    <input
+                        type="text"
+                        id="requestSearch"
+                        placeholder="Search requests..."
+                        style="width:220px;"
+                    >
+
+                </div>
+
+
+
+                <!-- =================================================
+                     REQUEST TABLE
+                     ================================================= -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Request
+                                </th>
+
+                                <th>
+                                    User
+                                </th>
+
+                                <th>
+                                    Resource
+                                </th>
+
+                                <th>
+                                    Requested Time
+                                </th>
+
+                                <th>
+                                    Purpose
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="requestsTableBody">
+
+                            <tr>
+
+                                <td colspan="7">
+                                    Loading requests...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DBMS FEATURES
+                 ================================================= -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Intelligent Request Processing
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Database concepts demonstrated by
+                            the request workflow
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="features">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚡
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Conflict Detection
+                            </strong>
+
+                            <p>
+                                The system checks whether the
+                                requested resource already has a
+                                conflicting confirmed booking.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚙
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Maintenance Validation
+                            </strong>
+
+                            <p>
+                                Requests overlapping scheduled or
+                                active maintenance are prevented.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🔐
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Role-Based Access
+                            </strong>
+
+                            <p>
+                                Only authorized ADMIN and STAFF
+                                users can approve or reject
+                                booking requests.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ◫
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Transaction Management
+                            </strong>
+
+                            <p>
+                                Approval is executed using a
+                                database transaction to maintain
+                                consistency.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         EXISTING APPLICATION JAVASCRIPT
+         ===================================================== -->
+
+    <script src="js/app.js"></script>
+
+
+
+    <!-- =====================================================
+         REQUEST PAGE SCRIPT
+         ===================================================== -->
+
+    <script>
+
+        let allRequests = [];
+
+
+        async function loadRequestsPage() {
+
+            const tableBody =
+                document.getElementById(
+                    "requestsTableBody"
+                );
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/booking-requests`
+                    );
+
+
+                const requests =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7">
+                                Could not load booking requests.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                allRequests = requests;
+
+
+                updateRequestSummary(
+                    requests
+                );
+
+
+                renderRequests(
+                    requests
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Request loading error:",
+                    error
+                );
+
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7">
+                            Could not connect to the server.
+                        </td>
+                    </tr>
+                `;
+
+            }
+
+        }
+
+
+
+        function updateRequestSummary(requests) {
+
+            const total =
+                requests.length;
+
+
+            const pending =
+                requests.filter(
+                    request =>
+                        request.status ===
+                        "PENDING"
+                ).length;
+
+
+            const approved =
+                requests.filter(
+                    request =>
+                        request.status ===
+                        "APPROVED"
+                ).length;
+
+
+            const rejected =
+                requests.filter(
+                    request =>
+                        request.status ===
+                        "REJECTED"
+                ).length;
+
+
+            document.getElementById(
+                "totalRequests"
+            ).textContent = total;
+
+
+            document.getElementById(
+                "pendingRequestsPage"
+            ).textContent = pending;
+
+
+            document.getElementById(
+                "approvedRequests"
+            ).textContent = approved;
+
+
+            document.getElementById(
+                "rejectedRequests"
+            ).textContent = rejected;
+
+        }
+
+
+
+        function getRequestStatusClass(status) {
+
+            if (status === "PENDING") {
+                return "status-pending";
+            }
+
+            if (status === "APPROVED") {
+                return "status-approved";
+            }
+
+            if (status === "REJECTED") {
+                return "status-rejected";
+            }
+
+            if (status === "CANCELLED") {
+                return "status-cancelled";
+            }
+
+            return "";
+
+        }
+
+
+
+        function renderRequests(requests) {
+
+            const tableBody =
+                document.getElementById(
+                    "requestsTableBody"
+                );
+
+
+            if (requests.length === 0) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7">
+                            No booking requests found.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            tableBody.innerHTML =
+                requests.map(
+                    request => `
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                #${request.request_id}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                ${request.requester || "—"}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${request.email || ""}
+                            </small>
+
+                        </td>
+
+
+                        <td>
+                            ${request.resource_name || "—"}
+                        </td>
+
+
+                        <td>
+
+                            ${formatDateTime(
+                                request.requested_start
+                            )}
+
+                            <br>
+
+                            <span
+                                style="
+                                    color:#9ca3af;
+                                    font-size:10px;
+                                ">
+
+                                to
+
+                            </span>
+
+                            <br>
+
+                            ${formatDateTime(
+                                request.requested_end
+                            )}
+
+                        </td>
+
+
+                        <td>
+                            ${request.purpose || "—"}
+                        </td>
+
+
+                        <td>
+
+                            <span
+                                class="status-badge
+                                ${getRequestStatusClass(
+                                    request.status
+                                )}">
+
+                                ${request.status}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            ${
+                                request.status ===
+                                "PENDING"
+
+                                ?
+
+                                `
+
+                                <div
+                                    style="
+                                        display:flex;
+                                        gap:6px;
+                                        flex-wrap:wrap;
+                                    "
+                                >
+
+                                    <button
+                                        onclick="
+                                            approveRequest(
+                                                ${request.request_id}
+                                            )
+                                        "
+                                        style="
+                                            padding:6px 10px;
+                                            border:none;
+                                            border-radius:6px;
+                                            background:#16a34a;
+                                            color:white;
+                                            font-size:10px;
+                                            font-weight:600;
+                                            cursor:pointer;
+                                        "
+                                    >
+                                        Approve
+                                    </button>
+
+
+                                    <button
+                                        onclick="
+                                            rejectRequest(
+                                                ${request.request_id}
+                                            )
+                                        "
+                                        style="
+                                            padding:6px 10px;
+                                            border:none;
+                                            border-radius:6px;
+                                            background:#dc2626;
+                                            color:white;
+                                            font-size:10px;
+                                            font-weight:600;
+                                            cursor:pointer;
+                                        "
+                                    >
+                                        Reject
+                                    </button>
+
+                                </div>
+
+                                `
+
+                                :
+
+                                `
+                                <span
+                                    style="
+                                        color:#9ca3af;
+                                        font-size:10px;
+                                    "
+                                >
+                                    No action
+                                </span>
+                                `
+                            }
+
+                        </td>
+
+                    </tr>
+
+                `
+                ).join("");
+
+        }
+
+
+
+        async function approveRequest(
+            requestId
+        ) {
+
+            const storedUser =
+                sessionStorage.getItem(
+                    "loggedInUser"
+                );
+
+
+            if (!storedUser) {
+
+                alert(
+                    "Please log in again."
+                );
+
+                return;
+            }
+
+
+            const user =
+                JSON.parse(
+                    storedUser
+                );
+
+
+            if (
+                user.role !== "ADMIN" &&
+                user.role !== "STAFF"
+            ) {
+
+                alert(
+                    "Access denied. Only ADMIN or STAFF users can approve requests."
+                );
+
+                return;
+            }
+
+
+            const confirmed =
+                confirm(
+                    "Approve this booking request?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/booking-requests/${requestId}/approve`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                reviewer_id:
+                                    user.user_id
+                            })
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    alert(
+                        result.error ||
+                        "Could not approve request."
+                    );
+
+                    return;
+                }
+
+
+                alert(
+                    "Booking request approved successfully."
+                );
+
+
+                loadRequestsPage();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Approval error:",
+                    error
+                );
+
+
+                alert(
+                    "Could not connect to the server."
+                );
+
+            }
+
+        }
+
+
+
+        async function rejectRequest(
+            requestId
+        ) {
+
+            const storedUser =
+                sessionStorage.getItem(
+                    "loggedInUser"
+                );
+
+
+            if (!storedUser) {
+
+                alert(
+                    "Please log in again."
+                );
+
+                return;
+            }
+
+
+            const user =
+                JSON.parse(
+                    storedUser
+                );
+
+
+            if (
+                user.role !== "ADMIN" &&
+                user.role !== "STAFF"
+            ) {
+
+                alert(
+                    "Access denied. Only ADMIN or STAFF users can reject requests."
+                );
+
+                return;
+            }
+
+
+            const confirmed =
+                confirm(
+                    "Reject this booking request?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/booking-requests/${requestId}/reject`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                reviewer_id:
+                                    user.user_id
+                            })
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    alert(
+                        result.error ||
+                        "Could not reject request."
+                    );
+
+                    return;
+                }
+
+
+                alert(
+                    "Booking request rejected successfully."
+                );
+
+
+                loadRequestsPage();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Rejection error:",
+                    error
+                );
+
+
+                alert(
+                    "Could not connect to the server."
+                );
+
+            }
+
+        }
+
+
+
+        function formatDateTime(value) {
+
+            if (!value) {
+                return "—";
+            }
+
+
+            const date =
+                new Date(value);
+
+
+            if (isNaN(date.getTime())) {
+                return value;
+            }
+
+
+            return date.toLocaleString(
+                "en-IN",
+                {
+                    dateStyle: "medium",
+                    timeStyle: "short"
+                }
+            );
+
+        }
+
+
+
+        const requestSearch =
+            document.getElementById(
+                "requestSearch"
+            );
+
+
+        if (requestSearch) {
+
+            requestSearch.addEventListener(
+                "input",
+                function () {
+
+                    const search =
+                        this.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    const filtered =
+                        allRequests.filter(
+                            request =>
+
+                                String(
+                                    request.request_id
+                                )
+                                .includes(search)
+
+                                ||
+
+                                (
+                                    request.requester ||
+                                    ""
+                                )
+                                .toLowerCase()
+                                .includes(search)
+
+                                ||
+
+                                (
+                                    request.resource_name ||
+                                    ""
+                                )
+                                .toLowerCase()
+                                .includes(search)
+
+                                ||
+
+                                (
+                                    request.purpose ||
+                                    ""
+                                )
+                                .toLowerCase()
+                                .includes(search)
+
+                                ||
+
+                                (
+                                    request.status ||
+                                    ""
+                                )
+                                .toLowerCase()
+                                .includes(search)
+
+                        );
+
+
+                    renderRequests(
+                        filtered
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        loadRequestsPage();
+
+    </script>
+
+
+</body>
+
+</html>

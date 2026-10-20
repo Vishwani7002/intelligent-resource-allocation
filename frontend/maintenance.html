@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Maintenance | Intelligent Resource Allocation</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+    <div class="topbar-brand">
+
+        <div class="topbar-logo">
+            IRA
+        </div>
+
+        <div>
+
+            <h1>
+                Intelligent Resource Allocation
+            </h1>
+
+            <p>
+                Resource Management & Conflict Management System
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="topbar-user"
+         id="userInfo">
+
+        <div class="user-avatar">
+            SA
+        </div>
+
+        <div class="user-details">
+
+            <strong>
+                System Administrator
+            </strong>
+
+            <span>
+                Administrator
+            </span>
+
+        </div>
+
+        <span class="user-chevron">
+            ▾
+        </span>
+
+    </div>
+
+</header>
+
+
+
+    <!-- MAIN LAYOUT -->
+
+    <div class="layout">
+
+
+        <!-- SIDEBAR -->
+
+       <aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-logo">
+            IRA
+        </div>
+
+        <div class="brand-text">
+
+            <strong>
+                IRA System
+            </strong>
+
+            <span>
+                Resource Management
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="index.html"
+           class="nav-item">
+
+            <span class="nav-icon">
+                ▦
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a href="resources.html"
+           class="nav-item">
+
+            <span class="nav-icon">
+                ◫
+            </span>
+
+            <span>
+                Resources
+            </span>
+
+        </a>
+
+
+        <a href="bookings.html"
+           class="nav-item">
+
+            <span class="nav-icon">
+                ◷
+            </span>
+
+            <span>
+                Bookings
+            </span>
+
+        </a>
+
+
+        <a href="requests.html"
+           class="nav-item"
+           id="requestsNav">
+
+            <span class="nav-icon">
+                ◉
+            </span>
+
+            <span>
+                Booking Requests
+            </span>
+
+        </a>
+
+
+        <a href="maintenance.html"
+           class="nav-item active">
+
+            <span class="nav-icon">
+                ⚙
+            </span>
+
+            <span>
+                Maintenance
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-system">
+
+            <span class="system-dot"></span>
+
+            <div>
+
+                <strong>
+                    System Online
+                </strong>
+
+                <small>
+                    Database connected
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="logoutButton"
+            class="sidebar-logout">
+
+            <span>
+                ↪
+            </span>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+            
+
+
+
+        <!-- CONTENT -->
+
+        <main class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="dashboard-header">
+
+    <div>
+
+        <div class="page-eyebrow">
+            RESOURCE OPERATIONS
+        </div>
+
+        <h2>
+            Maintenance Management
+        </h2>
+
+        <p class="welcome">
+            Keep campus resources reliable, available and
+            ready for use through proactive maintenance tracking.
+        </p>
+
+    </div>
+
+
+                <button class="refresh-button"
+                        onclick="loadMaintenance()">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+
+            <!-- STAT CARDS -->
+
+            <div class="dashboard-cards">
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        🔧
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Total Records
+                        </span>
+
+                        <strong id="maintenanceTotal">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        📅
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Scheduled
+                        </span>
+
+                        <strong id="maintenanceScheduled">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ⚙️
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            In Progress
+                        </span>
+
+                        <strong id="maintenanceProgress">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Completed
+                        </span>
+
+                        <strong id="maintenanceCompleted">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MAIN MAINTENANCE PANEL -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Maintenance Records
+                        </h2>
+
+                        <p class="panel-subtitle">
+
+                            Track maintenance schedules and
+                            monitor resource service status.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-actions">
+
+                        <input
+                            type="text"
+                            id="maintenanceSearch"
+                            placeholder="Search maintenance..."
+                        >
+
+
+                        <select id="maintenanceStatusFilter">
+
+                            <option value="ALL">
+                                All Status
+                            </option>
+
+                            <option value="SCHEDULED">
+                                Scheduled
+                            </option>
+
+                            <option value="IN_PROGRESS">
+                                In Progress
+                            </option>
+
+                            <option value="COMPLETED">
+                                Completed
+                            </option>
+
+                            <option value="CANCELLED">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TABLE -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Resource
+                                </th>
+
+                                <th>
+                                    Reported By
+                                </th>
+
+                                <th>
+                                    Maintenance
+                                </th>
+
+                                <th>
+                                    Schedule
+                                </th>
+
+                                <th>
+                                    Description
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="maintenanceTable">
+
+                            <tr>
+
+                                <td colspan="7">
+
+                                    Loading maintenance records...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INFORMATION CARDS -->
+
+            <div class="dashboard-grid">
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>
+                                Maintenance Overview
+                            </h2>
+
+                            <p class="panel-subtitle">
+                                Current system maintenance state
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="analytics-list">
+
+
+                        <div class="analytics-item">
+
+                            <span>
+                                Scheduled Maintenance
+                            </span>
+
+                            <strong id="overviewScheduled">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="analytics-item">
+
+                            <span>
+                                Active Maintenance
+                            </span>
+
+                            <strong id="overviewActive">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="analytics-item">
+
+                            <span>
+                                Completed Maintenance
+                            </span>
+
+                            <strong id="overviewCompleted">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>
+                                System Protection
+                            </h2>
+
+                            <p class="panel-subtitle">
+                                Maintenance conflict prevention
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+
+                        <div class="feature-icon">
+                            🛡️
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Conflict Prevention
+                            </h3>
+
+                            <p>
+
+                                Resources under maintenance cannot
+                                be approved for conflicting bookings.
+
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- PAGE JAVASCRIPT -->
+
+    <script>
+
+        let maintenanceRecords = [];
+
+
+        async function loadMaintenance() {
+
+            const table =
+                document.getElementById(
+                    "maintenanceTable"
+                );
+
+
+            table.innerHTML = `
+
+                <tr>
+
+                    <td colspan="7">
+
+                        Loading maintenance records...
+
+                    </td>
+
+                </tr>
+
+            `;
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://127.0.0.1:5000/api/maintenance"
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load maintenance records."
+                    );
+
+                }
+
+
+                maintenanceRecords =
+                    await response.json();
+
+
+                updateStatistics();
+
+                renderMaintenance();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                table.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            Failed to load maintenance records.
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+
+        }
+
+
+
+        function updateStatistics() {
+
+            const total =
+                maintenanceRecords.length;
+
+
+            const scheduled =
+                maintenanceRecords.filter(
+                    item =>
+                        item.status === "SCHEDULED"
+                ).length;
+
+
+            const active =
+                maintenanceRecords.filter(
+                    item =>
+                        item.status === "IN_PROGRESS"
+                ).length;
+
+
+            const completed =
+                maintenanceRecords.filter(
+                    item =>
+                        item.status === "COMPLETED"
+                ).length;
+
+
+            document.getElementById(
+                "maintenanceTotal"
+            ).textContent = total;
+
+
+            document.getElementById(
+                "maintenanceScheduled"
+            ).textContent = scheduled;
+
+
+            document.getElementById(
+                "maintenanceProgress"
+            ).textContent = active;
+
+
+            document.getElementById(
+                "maintenanceCompleted"
+            ).textContent = completed;
+
+
+            document.getElementById(
+                "overviewScheduled"
+            ).textContent = scheduled;
+
+
+            document.getElementById(
+                "overviewActive"
+            ).textContent = active;
+
+
+            document.getElementById(
+                "overviewCompleted"
+            ).textContent = completed;
+
+        }
+
+
+
+        function renderMaintenance() {
+
+            const table =
+                document.getElementById(
+                    "maintenanceTable"
+                );
+
+
+            const search =
+                document.getElementById(
+                    "maintenanceSearch"
+                )
+                .value
+                .toLowerCase()
+                .trim();
+
+
+            const selectedStatus =
+                document.getElementById(
+                    "maintenanceStatusFilter"
+                ).value;
+
+
+            const filtered =
+                maintenanceRecords.filter(
+                    item => {
+
+                        const text = [
+
+                            item.resource_name,
+
+                            item.reported_by,
+
+                            item.maintenance_type,
+
+                            item.description,
+
+                            item.status
+
+                        ]
+                        .filter(Boolean)
+                        .join(" ")
+                        .toLowerCase();
+
+
+                        const matchesSearch =
+                            text.includes(search);
+
+
+                        const matchesStatus =
+                            selectedStatus === "ALL" ||
+                            item.status === selectedStatus;
+
+
+                        return (
+                            matchesSearch &&
+                            matchesStatus
+                        );
+
+                    }
+                );
+
+
+            if (filtered.length === 0) {
+
+                table.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            No maintenance records found.
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            table.innerHTML =
+                filtered.map(
+                    item => `
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                #${item.maintenance_id ?? "-"}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                ${item.resource_name ?? "-"}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            ${item.reported_by ?? "-"}
+
+                        </td>
+
+
+                        <td>
+
+                            ${item.maintenance_type ?? "-"}
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="date-range">
+
+                                <span>
+                                    ${formatDateTime(
+                                        item.start_time
+                                    )}
+                                </span>
+
+                                <span class="date-arrow">
+                                    ↓
+                                </span>
+
+                                <span>
+                                    ${formatDateTime(
+                                        item.end_time
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            ${item.description ?? "-"}
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status-badge ${getStatusClass(item.status)}">
+
+                                ${formatStatus(
+                                    item.status
+                                )}
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                `
+                )
+                .join("");
+
+        }
+
+
+
+        function formatDateTime(value) {
+
+            if (!value) {
+                return "-";
+            }
+
+
+            const date =
+                new Date(
+                    value.replace(
+                        " ",
+                        "T"
+                    )
+                );
+
+
+            if (isNaN(date.getTime())) {
+                return value;
+            }
+
+
+            return date.toLocaleString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+        }
+
+
+
+        function formatStatus(status) {
+
+            if (!status) {
+                return "-";
+            }
+
+
+            return status
+                .replaceAll(
+                    "_",
+                    " "
+                );
+
+        }
+
+
+
+        function getStatusClass(status) {
+
+            switch (status) {
+
+                case "SCHEDULED":
+                    return "status-scheduled";
+
+                case "IN_PROGRESS":
+                    return "status-in-progress";
+
+                case "COMPLETED":
+                    return "status-completed";
+
+                case "CANCELLED":
+                    return "status-cancelled";
+
+                default:
+                    return "";
+
+            }
+
+        }
+
+
+
+        document
+            .getElementById(
+                "maintenanceSearch"
+            )
+            .addEventListener(
+                "input",
+                renderMaintenance
+            );
+
+
+        document
+            .getElementById(
+                "maintenanceStatusFilter"
+            )
+            .addEventListener(
+                "change",
+                renderMaintenance
+            );
+
+
+        loadMaintenance();
+
+    </script>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

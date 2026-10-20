@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resources - Intelligent Resource Allocation System</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         APPLICATION HEADER
+         ===================================================== -->
+
+    <header class="app-header">
+
+        <div class="brand-area">
+
+            <div class="brand-logo">
+                IRA
+            </div>
+
+            <div class="brand-text">
+
+                <h1>
+                    Intelligent Resource Allocation
+                </h1>
+
+                <span>
+                    Resource & Conflict Management
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                System Online
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN LAYOUT
+         ===================================================== -->
+
+    <div class="layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <aside class="sidebar">
+
+
+            <div class="sidebar-brand">
+
+                <div class="sidebar-logo">
+                    IRA
+                </div>
+
+                <div>
+
+                    <strong>
+                        IRA System
+                    </strong>
+
+                    <span>
+                        Management Portal
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <span class="sidebar-label">
+                    MAIN MENU
+                </span>
+
+
+                <a href="index.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a href="resources.html"
+                   class="nav-link active">
+
+                    <span class="nav-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Resources
+                    </span>
+
+                </a>
+
+
+                <a href="bookings.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ◫
+                    </span>
+
+                    <span>
+                        Bookings
+                    </span>
+
+                </a>
+
+
+                <a href="requests.html"
+                   id="requestsNav"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ◷
+                    </span>
+
+                    <span>
+                        Booking Requests
+                    </span>
+
+                </a>
+
+
+                <a href="maintenance.html"
+                   class="nav-link">
+
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    <span>
+                        Maintenance
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-system">
+
+                    <span class="status-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            System Status
+                        </strong>
+
+                        <span>
+                            All services operational
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
+
+        <main class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="dashboard-header">
+
+                <div>
+
+                    <h1>
+                        Resources
+                    </h1>
+
+                    <p class="dashboard-subtitle">
+                        View and monitor all campus resources
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-user-bar">
+
+                    <div id="userInfo"
+                         class="user-info">
+
+                    </div>
+
+
+                    <button
+                        id="logoutButton"
+                        class="logout-button">
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESOURCE SUMMARY -->
+
+            <div class="cards">
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ▣
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Total Resources
+                        </h3>
+
+                        <p id="resourceTotal">
+                            --
+                        </p>
+
+                        <span>
+                            Registered resources
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Available
+                        </h3>
+
+                        <p id="resourceAvailable">
+                            --
+                        </p>
+
+                        <span>
+                            Ready for booking
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        ⚙
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Maintenance
+                        </h3>
+
+                        <p id="resourceMaintenance">
+                            --
+                        </p>
+
+                        <span>
+                            Under maintenance
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card dashboard-stat-card">
+
+                    <div class="stat-icon">
+                        !
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3>
+                            Unavailable
+                        </h3>
+
+                        <p id="resourceUnavailable">
+                            --
+                        </p>
+
+                        <span>
+                            Currently unavailable
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RESOURCE TABLE -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Resource Directory
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Complete list of managed campus resources
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <input
+                            type="text"
+                            id="resourceSearch"
+                            placeholder="Search resources..."
+                            style="width:220px;"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    Resource
+                                </th>
+
+                                <th>
+                                    Type
+                                </th>
+
+                                <th>
+                                    Location
+                                </th>
+
+                                <th>
+                                    Capacity
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Description
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="resourcesTableBody">
+
+                            <tr>
+
+                                <td colspan="7">
+                                    Loading resources...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESOURCE INFORMATION -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Resource Management
+                        </h2>
+
+                        <p class="panel-subtitle">
+                            Resources are centrally managed through
+                            the database system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="features">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ▣
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Centralized Resources
+                            </strong>
+
+                            <p>
+                                Classrooms, laboratories,
+                                seminar halls and other shared
+                                resources are stored in a
+                                centralized database.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Availability Tracking
+                            </strong>
+
+                            <p>
+                                Resource availability is updated
+                                based on bookings and maintenance
+                                activities.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚡
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Conflict Prevention
+                            </strong>
+
+                            <p>
+                                The system prevents overlapping
+                                bookings for the same resource.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚙
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Maintenance Awareness
+                            </strong>
+
+                            <p>
+                                Resources undergoing maintenance
+                                cannot be allocated during the
+                                maintenance period.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+
+    <script src="js/app.js"></script>
+
+
+    <!-- =====================================================
+         RESOURCE PAGE SCRIPT
+         ===================================================== -->
+
+    <script>
+
+        let allResources = [];
+
+
+        async function loadResourcesPage() {
+
+            const tableBody =
+                document.getElementById(
+                    "resourcesTableBody"
+                );
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/resources`
+                    );
+
+                const resources =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7">
+                                Could not load resources.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                allResources = resources;
+
+
+                updateResourceSummary(
+                    resources
+                );
+
+
+                renderResources(
+                    resources
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Resource loading error:",
+                    error
+                );
+
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7">
+                            Could not connect to the server.
+                        </td>
+                    </tr>
+                `;
+
+            }
+
+        }
+
+
+
+        function updateResourceSummary(resources) {
+
+            const total =
+                resources.length;
+
+
+            const available =
+                resources.filter(
+                    resource =>
+                        resource.status ===
+                        "AVAILABLE"
+                ).length;
+
+
+            const maintenance =
+                resources.filter(
+                    resource =>
+                        resource.status ===
+                        "MAINTENANCE"
+                ).length;
+
+
+            const unavailable =
+                resources.filter(
+                    resource =>
+                        resource.status ===
+                        "UNAVAILABLE" ||
+                        resource.status ===
+                        "RETIRED"
+                ).length;
+
+
+            document.getElementById(
+                "resourceTotal"
+            ).textContent = total;
+
+
+            document.getElementById(
+                "resourceAvailable"
+            ).textContent = available;
+
+
+            document.getElementById(
+                "resourceMaintenance"
+            ).textContent = maintenance;
+
+
+            document.getElementById(
+                "resourceUnavailable"
+            ).textContent = unavailable;
+
+        }
+
+
+
+        function getStatusClass(status) {
+
+            if (status === "AVAILABLE") {
+                return "status-available";
+            }
+
+            if (status === "MAINTENANCE") {
+                return "status-maintenance";
+            }
+
+            if (status === "UNAVAILABLE") {
+                return "status-unavailable";
+            }
+
+            if (status === "RETIRED") {
+                return "status-cancelled";
+            }
+
+            return "";
+
+        }
+
+
+
+        function renderResources(resources) {
+
+            const tableBody =
+                document.getElementById(
+                    "resourcesTableBody"
+                );
+
+
+            if (resources.length === 0) {
+
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7">
+                            No resources found.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            tableBody.innerHTML =
+                resources.map(
+                    resource => `
+
+                    <tr>
+
+                        <td>
+                            #${resource.resource_id}
+                        </td>
+
+                        <td>
+                            <strong>
+                                ${resource.resource_name}
+                            </strong>
+                        </td>
+
+                        <td>
+                            ${resource.resource_type}
+                        </td>
+
+                        <td>
+                            ${resource.building_name}
+                            -
+                            ${resource.room_number}
+                        </td>
+
+                        <td>
+                            ${resource.capacity}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="status-badge
+                                ${getStatusClass(
+                                    resource.status
+                                )}">
+
+                                ${resource.status}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+                            ${resource.description || "—"}
+                        </td>
+
+                    </tr>
+
+                `
+                ).join("");
+
+        }
+
+
+
+        const resourceSearch =
+            document.getElementById(
+                "resourceSearch"
+            );
+
+
+        if (resourceSearch) {
+
+            resourceSearch.addEventListener(
+                "input",
+                function () {
+
+                    const search =
+                        this.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    const filtered =
+                        allResources.filter(
+                            resource =>
+
+                                resource.resource_name
+                                    .toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                resource.resource_type
+                                    .toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                resource.building_name
+                                    .toLowerCase()
+                                    .includes(search)
+
+                                ||
+
+                                resource.room_number
+                                    .toLowerCase()
+                                    .includes(search)
+
+                        );
+
+
+                    renderResources(
+                        filtered
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        loadResourcesPage();
+
+    </script>
+
+
+</body>
+
+</html>
